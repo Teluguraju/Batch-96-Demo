@@ -1,0 +1,48 @@
+<apex:page standardController="Account">
+ <apex:detail relatedList="false"/>
+  <!-- Define Tab panel .css styles -->
+    <style>
+    .activeTab {background-color: #236FBD; color:white; background-image:none}
+    .inactiveTab { background-color: lightgrey; color:black; background-image:none}
+    </style>
+            
+    <!-- Create Tab panel -->
+    <apex:tabPanel switchType="client" selectedTab="account" id="AccountTabPanel"
+        tabClass="activeTab" inactiveTabClass="inactiveTab">
+        <apex:tab label="Account" name="account" id="accountId">
+            <apex:detail relatedList="false"/>
+            
+        </apex:tab>
+        <apex:tab label="Contacts" name="contacts" id="contactsId">
+            <apex:form >
+                 <apex:repeat value="{!Account.Contacts}" var="con">
+                     <apex:pageBlock title="{!con.Name}">
+                         <apex:pageBlockSection >
+                             <apex:outputField value="{!con.FirstName}"/>
+                             <apex:outputField value="{!con.LastName}"/>
+                             <apex:outputField value="{!con.Email}"/>
+                             <apex:outputField value="{!con.MobilePhone}"/>
+                         </apex:pageBlockSection>
+                         <apex:pageBlockButtons location="top">
+                             <apex:commandButton value="Edit" action="/{!con.Id}/e?retURL=/{!Account.Id}&saveURL=/{!con.Id}"/>
+                             <apex:commandButton value="Delete"/>
+                         </apex:pageBlockButtons>
+                     </apex:pageBlock>
+                 
+                 
+                 
+                 </apex:repeat>   
+            </apex:form>
+        </apex:tab>
+        <apex:tab label="Opportunities" name="opportunities" id="opportunitiesId">
+            <apex:relatedList list="opportunities"/>
+        
+        </apex:tab>
+        <apex:tab label="Cases" name="cases" id="casessId">
+            <apex:relatedList list="cases"/>
+        
+        </apex:tab>
+    </apex:tabPanel>
+ 
+ 
+</apex:page>

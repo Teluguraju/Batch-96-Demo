@@ -1,0 +1,17 @@
+/* Tag selector */
+        h1{
+            padding:10px;
+            color:blue;
+        
+        }
+        /* Id selector */
+        #h1Id{
+            background-color:yellow;
+        
+        }
+        
+       /*Class Selector */
+       
+       .btns-margin{
+               margin-left:19%;
+       }

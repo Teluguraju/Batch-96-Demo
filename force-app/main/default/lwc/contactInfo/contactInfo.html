@@ -1,0 +1,47 @@
+<template>
+      <lightning-card  title={title}>
+         <lightning-layout>
+            <lightning-layout-item padding="around-small">
+               <div class="header-column">
+                  <p class="field-title" title="First Name">First Name</p>
+                  <p>{person.firstName}</p>
+               </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+               <div class="header-column">
+                  <p class="field-title" title="Last Name">Last Name</p>
+                  <p>{person.lastName}</p>
+               </div>
+            </lightning-layout-item>
+         </lightning-layout>
+            <lightning-layout>
+               <lightning-layout-item padding="around-small">
+                   <div class="header-column">
+                        <lightning-input type="text" name="firstName" label="First Name" value={person.firstName} 
+                        onchange={assignValue}></lightning-input>
+                   </div>
+               </lightning-layout-item>
+               <lightning-layout-item padding="around-small">
+                  <div class="header-column">
+                       <lightning-input type="text" name="lastName" label="Last Name" value={person.lastName} 
+                       onchange={assignValue}></lightning-input>
+                  </div>
+              </lightning-layout-item>  
+            </lightning-layout>
+          <!--  <template if:true={account.data}>  using for wire property (won't be used for wire function)-->
+            <template if:true={data}>
+               <lightning-layout>
+                  <lightning-layout-item padding="around-small">
+                      <div class="header-column">
+                        Account Name: {name}
+                      </div>
+                  </lightning-layout-item>
+                  <lightning-layout-item padding="around-small">
+                     <div class="header-column">
+                     Account Industry: {industry}
+                     </div>
+                 </lightning-layout-item>
+               </lightning-layout>
+            </template>
+      </lightning-card>
+</template>
